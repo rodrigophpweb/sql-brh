@@ -11,3 +11,19 @@ EXCEPTION
     WHEN OTHERS THEN
         RAISE;
 END;
+
+
+-- Criar função calcula_idade
+CREATE OR REPLACE FUNCTION brh.calcula_idade (
+    p_data_nascimento IN DATE
+) RETURN NUMBER IS
+    v_idade NUMBER;
+BEGIN
+    -- Calculate the age in years using MONTHS_BETWEEN
+    v_idade := FLOOR(MONTHS_BETWEEN(SYSDATE, p_data_nascimento) / 12);
+    RETURN v_idade;
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
