@@ -65,6 +65,26 @@ EXCEPTION
         RAISE;
 END;
 
+-- Validar novo projeto
+CREATE OR REPLACE PROCEDURE brh.insere_projeto (
+    p_nome_projeto IN VARCHAR2,
+    p_responsavel IN VARCHAR2
+) IS
+BEGIN
+    
+    IF p_nome_projeto IS NULL OR LENGTH(p_nome_projeto) < 2 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Nome de projeto inválido! Deve ter dois ou mais caracteres.');
+    END IF;
+
+    INSERT INTO brh.projeto (id_projeto, nome_projeto, responsavel)
+    VALUES (brh.seq_projeto.NEXTVAL, p_nome_projeto, p_responsavel);
+
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE;
+END;
+
+
 
 
 
