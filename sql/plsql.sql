@@ -26,4 +26,46 @@ EXCEPTION
     WHEN OTHERS THEN
         RAISE;
 END;
-/
+
+-- Criar função finaliza_projeto
+CREATE OR REPLACE FUNCTION brh.finaliza_projeto (
+    p_id_projeto IN NUMBER
+) RETURN DATE IS
+    v_data_fim DATE;
+BEGIN
+    -- Atualiza a data de finalização do projeto
+    v_data_fim := SYSDATE;
+    UPDATE brh.projeto
+    SET data_fim = v_data_fim
+    WHERE id_projeto = p_id_projeto;
+
+    -- Retorna a data de finalização
+    RETURN v_data_fim;
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE;
+END;
+
+-- Criar função finaliza_projeto
+CREATE OR REPLACE FUNCTION brh.finaliza_projeto (
+    p_id_projeto IN NUMBER
+) RETURN DATE IS
+    v_data_fim DATE;
+BEGIN
+    -- Atualiza a data de finalização do projeto
+    v_data_fim := SYSDATE;
+    UPDATE brh.projeto
+    SET data_fim = v_data_fim
+    WHERE id_projeto = p_id_projeto;
+
+    -- Retorna a data de finalização
+    RETURN v_data_fim;
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE;
+END;
+
+
+
+
+
